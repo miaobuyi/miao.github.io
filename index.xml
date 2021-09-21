@@ -3,7 +3,8 @@
         <title>miaobuyi&#39;s blog</title>
         <link>https://miaobuyi.web/</link>
         <description>miaobuyi&#39;s blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1542279708@qq.com (喵不易)</managingEditor>
+            <webMaster>1542279708@qq.com (喵不易)</webMaster><lastBuildDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</lastBuildDate>
             <atom:link href="https://miaobuyi.web/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>SpringMVC</title>
