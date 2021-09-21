@@ -1,6 +1,8 @@
 # 设计模式
 
 
+<!--more-->
+
 ## 单例模式
 
 > 饿汉式单例
@@ -80,7 +82,6 @@ public class LazyMan {
 > 静态内部类
 
 ```java
-
     // 静态内部类
 public class Holder {
     private Holder(){
@@ -102,7 +103,6 @@ public class Holder {
 > 枚举
 
 ```java
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 //enum是一个什么?本身也是 一个CLass类

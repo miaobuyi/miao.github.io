@@ -1,23 +1,37 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>我的全新网站</title>
+        <title>miaobuyi&#39;s blog</title>
         <link>https://miaobuyi.web/</link>
-        <description>我的全新网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Sep 2021 14:41:43 &#43;0800</lastBuildDate>
+        <description>miaobuyi&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</lastBuildDate>
             <atom:link href="https://miaobuyi.web/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>First_post</title>
-    <link>https://miaobuyi.web/first_post/</link>
-    <pubDate>Tue, 21 Sep 2021 14:41:43 &#43;0800</pubDate>
+    <title>SpringMVC</title>
+    <link>https://miaobuyi.web/springmvc/</link>
+    <pubDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/first_post/</guid>
-    <description><![CDATA[First_post ]]></description>
+    <guid>https://miaobuyi.web/springmvc/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Mybatis</title>
+    <link>https://miaobuyi.web/mybatis/</link>
+    <pubDate>Tue, 21 Sep 2021 17:51:18 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://miaobuyi.web/mybatis/</guid>
+    <description><![CDATA[]]></description>
 </item><item>
     <title>设计模式</title>
     <link>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
-    <pubDate>Tue, 21 Sep 2021 14:41:43 &#43;0800</pubDate>
+    <pubDate>Tue, 21 Sep 2021 17:50:13 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
-    <description><![CDATA[单例模式 饿汉式单例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 //饿汉式单例 public class Hungry { //可能会浪费空间 private byte[] datal = new byte [1024*1024]; private byte[] data2 = new by mte [1024*1024]; private byte[] data3 = new byte]]></description>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Spring</title>
+    <link>https://miaobuyi.web/spring/</link>
+    <pubDate>Tue, 21 Sep 2021 17:36:25 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://miaobuyi.web/spring/</guid>
+    <description><![CDATA[]]></description>
 </item></channel>
 </rss>

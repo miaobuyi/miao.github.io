@@ -1,0 +1,14 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SpringMVC - 标签 - miaobuyi&#39;s blog</title>
+        <link>https://miaobuyi.web/tags/springmvc/</link>
+        <description>SpringMVC - 标签 - miaobuyi&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</lastBuildDate><atom:link href="https://miaobuyi.web/tags/springmvc/" rel="self" type="application/rss+xml" /><item>
+    <title>SpringMVC</title>
+    <link>https://miaobuyi.web/springmvc/</link>
+    <pubDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://miaobuyi.web/springmvc/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
+</rss>
