@@ -12,5 +12,12 @@
     <author>作者</author>
     <guid>https://miaobuyi.web/first_post/</guid>
     <description><![CDATA[First_post ]]></description>
+</item><item>
+    <title>设计模式</title>
+    <link>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+    <pubDate>Tue, 21 Sep 2021 14:41:43 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+    <description><![CDATA[单例模式 饿汉式单例 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 //饿汉式单例 public class Hungry { //可能会浪费空间 private byte[] datal = new byte [1024*1024]; private byte[] data2 = new by mte [1024*1024]; private byte[] data3 = new byte]]></description>
 </item></channel>
 </rss>
