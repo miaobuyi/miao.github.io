@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>设计模式 - miaobuyi&#39;s blog</title><meta name="Description" content=""><meta property="og:title" content="设计模式" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-21T17:50:13+08:00" />
+<meta property="article:modified_time" content="2021-09-21T17:50:13+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="设计模式"/>
+<meta name="twitter:description" content=""/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" /><link rel="prev" href="https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" /><link rel="next" href="https://miaobuyi.web/mybatis/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.scss"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "设计模式",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/miaobuyi.web\/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80\/"
+        },"genre": "posts","keywords": "单例模式","wordcount":  2564 ,
+        "url": "https:\/\/miaobuyi.web\/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80\/","datePublished": "2021-09-21T17:50:13+08:00","dateModified": "2021-09-21T17:50:13+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "喵不易"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="miaobuyi&#39;s blog">LoveIt</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="miaobuyi&#39;s blog">LoveIt</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">设计模式</h1><h2 class="single-subtitle">单例模式</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>喵不易</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><i class="far fa-folder fa-fw"></i>设计模式</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-21">2021-09-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2564 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 6 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#day6-c语言">Day6 C语言</a>
+      <ul>
+        <li><a href="#输入输出画家音乐家和">输入输出画家音乐家和</a>
+          <ul>
+            <li><a href="#-getcharputchar">-getchar()\putchar()</a></li>
+            <li><a href="#printfscanf">printf()\scanf()</a></li>
+            <li><a href="#getsputs">gets()\puts()</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#font-stylecolor922999要注意栈溢出font"><font style="color:#922999">要注意栈溢出</font></a></li>
+    <li><a href="#day6-linux">Day6 Linux</a></li>
+    <li><a href="#day7--c语言">Day7  C语言</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#数组初始化">数组初始化</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#day8-c语言">Day8 C语言</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#fflushstdout">fflush(stdout);</a>
+              <ul>
+                <li><a href="#刷新缓冲区image-20230301095123749httpstypora-1304577690cosap-chengdumyqcloudcomimage-20230301095123749png">刷新缓冲区，<img src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png" alt="image-20230301095123749"></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#day-09-c语言">Day 09 C语言</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#if-条件编译">#if 条件编译</a></li>
+          </ul>
+        </li>
+        <li><a href="#day10-c语言">Day10 C语言</a>
+          <ul>
+            <li><a href="#地址存放问题">地址存放问题</a></li>
+          </ul>
+        </li>
+        <li><a href="#第二周周末-c语言">第二周周末 C语言</a>
+          <ul>
+            <li><a href="#同样地址问题多字节数据高位存放在高地址地位存放在地址例">同样地址问题,多字节数据，高位存放在高地址，地位存放在地址。例</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#day11-c语言">Day11 C语言</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#野指针">野指针</a></li>
+            <li><a href="#指针运算">指针运算</a></li>
+            <li><a href="#指针与二维数组">指针与二维数组</a></li>
+            <li><a href="#大端序和小端序">大端序和小端序</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="day6-c语言">Day6 C语言</h2>
+<h3 id="输入输出画家音乐家和">输入输出画家音乐家和</h3>
+<h4 id="-getcharputchar">-getchar()\putchar()</h4>
+<blockquote>
+<p>getchar()会接受一切字符，包括空格、回车</p>
+</blockquote>
+<h4 id="printfscanf">printf()\scanf()</h4>
+<blockquote>
+<p>%d 整形</p>
+<p>%c 字符</p>
+<p>%f 单精度</p>
+<p>%d 双精度</p>
+<p>%p 地址</p>
+<p>%s 字符串</p>
+<p>&mdash; scanf()</p>
+<ul>
+<li>解决垃圾字符</li>
+<li>抑制符 指定输入项后的内容不输入<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png"
+        title="1677466757754" /></li>
+</ul>
+<ol start="2">
+<li>用getchar()处理</li>
+<li>在连续输入字符的中间加上空格</li>
+</ol>
+<ul>
+<li>遇到空格，就相当于另外一个字符串</li>
+</ul>
+</blockquote>
+<h4 id="getsputs">gets()\puts()</h4>
+<blockquote>
+<p>gets()</p>
+<ul>
+<li>
+<p>功能：从键盘输入一个指定的字符串</p>
+</li>
+<li>
+<p>gets(<font style="color:red">输入字符串的首地址</font>)</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;HELLO&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">gets</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<h2 id="font-stylecolor922999要注意栈溢出font"><font style="color:#922999">要注意栈溢出</font></h2>
+</li>
+</ul>
+<p>puts()</p>
+<ul>
+<li>
+<p>功能：向终端输出一个指定的字符串</p>
+</li>
+<li>
+<p>puts(<font style="color:red">输出内容首地址</font>);</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">char</span> <span class="n">a</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="s">&#34;HELLO&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="nf">puts</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">* ##### 自带换行 不用加&#34;\n&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<blockquote>
+<p>获取随机的时间种子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">srand</span><span class="p">((</span><span class="kt">unsigned</span><span class="p">)</span><span class="nf">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="nf">rand</span><span class="p">();</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<h2 id="day6-linux">Day6 Linux</h2>
+<blockquote>
+<p>man命令（手册）</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485741404.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485741404.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485741404.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485741404.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485741404.png"
+        title="1677485741404" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485724006.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485724006.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485724006.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485724006.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677485724006.png"
+        title="1677485724006" /></p>
+</blockquote>
+<h2 id="day7--c语言">Day7  C语言</h2>
+<h4 id="数组初始化">数组初始化</h4>
+<blockquote>
+<ul>
+<li>完全初始化</li>
+<li>int a[5]={1,2,3,4,5};</li>
+<li>不完全初始化，其余初始化的元素默认为0</li>
+<li>int b[5]={1,2,3};</li>
+<li>不指定元素个数，根据给定的来分配</li>
+<li>int c[]={1,2,3,4,5}</li>
+</ul>
+</blockquote>
+<p>寻找素数的方法&mdash;<a href="https://zhuanlan.zhihu.com/p/104314640" target="_blank" rel="noopener noreffer">https://zhuanlan.zhihu.com/p/104314640</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="err">方法</span><span class="mi">3</span><span class="err">：普通筛法——埃拉托斯特尼</span><span class="p">(</span><span class="n">Eratosthenes</span><span class="p">)</span><span class="err">筛法</span>
+</span></span><span class="line"><span class="cl"><span class="err">思路</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="err">我们的想法是，创建一个比范围上限大</span><span class="mi">1</span><span class="err">的数组，我们只关注下标为</span> <span class="mi">1</span> <span class="o">~</span> <span class="n">N</span><span class="err">（要求的上限）</span> <span class="err">的数组元素与数组下标（一一对应）。</span>
+</span></span><span class="line"><span class="cl"><span class="err">将数组初始化为</span><span class="mi">1</span><span class="err">。然后用</span><span class="n">for</span><span class="err">循环，遍历范围为：【</span><span class="mi">2</span> <span class="o">~</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="err">】。如果数组元素为</span><span class="mi">1</span><span class="err">，则说明这个数组元素的下标所对应的数是素数。</span>
+</span></span><span class="line"><span class="cl"><span class="err">随后我们将这个下标（除</span><span class="mi">1</span><span class="err">以外）的整数倍所对应的数组元素全部置为</span><span class="mi">0</span><span class="err">，也就是判断其为非素数。</span>
+</span></span><span class="line"><span class="cl"><span class="err">这样，我们就知道了范围内（</span><span class="mi">1</span> <span class="o">~</span> <span class="err">范围上限</span><span class="n">N</span><span class="err">）所有数是素数（下标对应的数组元素值为</span><span class="mi">1</span><span class="err">）或不是素数（下标对应的数组元素值为</span><span class="mi">0</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">用百度百科对埃拉托斯特尼筛法简单描述：要得到自然数</span><span class="n">n</span><span class="err">以内的全部素数，必须把不大于</span> <span class="err">的所有素数的倍数剔除，剩下的就是素数。</span>
+</span></span><span class="line"><span class="cl"><span class="err">核心代码：</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//                 判断素数的数组    范围上限N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">Eratprime</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">isprime</span><span class="p">,</span> <span class="kt">int</span> <span class="n">upper_board</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//初始化isprime
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">upper_board</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">upper_board</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">isprime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">*</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">upper_board</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span><span class="c1">//素数的n倍（n &gt;= 2）不是素数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">isprime</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="err">方法</span><span class="mi">4</span><span class="err">：线性筛法——欧拉筛法</span>
+</span></span><span class="line"><span class="cl"><span class="err">思路</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl"><span class="err">我们再思考一下上面的埃拉托斯特尼筛法，会发现，在“剔除“非素数时，有些合数会重复赋值。这样就增加里复杂度，降低了效率。</span>
+</span></span><span class="line"><span class="cl"><span class="err">比如：范围上限</span><span class="n">N</span> <span class="o">=</span> <span class="mi">16</span><span class="err">时</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="err">是素数，剔除”</span><span class="mi">2</span> <span class="err">的倍数“，他们是：</span><span class="mi">4</span><span class="err">，</span><span class="mi">6</span><span class="err">，</span> <span class="mi">8</span><span class="err">，</span><span class="mi">10</span><span class="err">，</span> <span class="mi">12</span><span class="err">，</span> <span class="mi">14</span><span class="err">，</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl"><span class="mi">3</span><span class="err">是素数，剔除”</span><span class="mi">3</span> <span class="err">的倍数”，他们时，</span><span class="mi">6</span><span class="err">，</span><span class="mi">9</span><span class="err">，</span><span class="mi">12</span><span class="err">，</span><span class="mi">15</span>
+</span></span><span class="line"><span class="cl"><span class="mi">6</span><span class="err">，</span><span class="mi">12</span><span class="err">是重复的。如何减少重复呢？</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">核心代码：</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">PrimeList</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">Prime</span><span class="p">,</span> <span class="kt">bool</span><span class="o">*</span> <span class="n">isPrime</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">isPrime</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span><span class="c1">//确保isPrime不是空指针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//将isPrime数组初始化为 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">isPrime</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">isPrime</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">Prime</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//从2遍历到范围上限N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">isPrime</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="c1">//如果下标（下标对应着1 ~ 范围上限N）对应的isPrime值没有被置为false，说明这个数是素数，将下标放入素数数组
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">Prime</span><span class="p">[</span><span class="n">count</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//循环控制表达式的意义：j小于等于素数数组的个数 或 素数数组中的每一个素数与 i 的积小于范围上限N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">Prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span><span class="p">)</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="c1">//将i强制转换是因为vs上有warning，要求转换为宽类型防止算术溢出。数据上不产生影响
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">isPrime</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">Prime</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span><span class="c1">//每一个素数的 i 倍（i &gt;= 2）都不是素数，置为false
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//这个是欧拉筛法的核心，它可以减少非素数置false的重复率
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//意义是将每一个合数（非素数）拆成 2（最小因数）与最大因数 的乘积
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="n">Prime</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="day8-c语言">Day8 C语言</h2>
+<blockquote>
+<p>/x 表示16进制</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="nf">printf</span><span class="p">(</span><span class="s">&#34;%c</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="s">&#34;/x69&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">output</span><span class="o">---&gt;</span> <span class="n">i</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>结果为i -&gt;the reason is 十六进制 69 对应的十进制为105，从ASCLL表中可以查到105对于为i</p>
+</blockquote>
+<h4 id="fflushstdout">fflush(stdout);</h4>
+<h5 id="刷新缓冲区image-20230301095123749httpstypora-1304577690cosap-chengdumyqcloudcomimage-20230301095123749png">刷新缓冲区，<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230301095123749.png"
+        title="image-20230301095123749" /></h5>
+<p>如果不加fflush(),则程序不会输出，需要等程序结束后才会输出。原因是以为缓冲区。</p>
+<blockquote>
+<p>\r表示光标移动到改行的首位</p>
+<p>\n表示移动到下一行</p>
+<p>写程序时通常只写\n，程序回自动变成\r\n</p>
+<p>%s 表示输入整个字符串</p>
+</blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%9B%BE.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%9B%BE.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%9B%BE.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%9B%BE.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E5%9B%BE.png"
+        title="虚拟内存图" /></p>
+<blockquote>
+<p>存储类型&mdash;-&gt;变量的存储类型关系到变量的存储位置，C语言中定义了4种存储属性，即 <strong>自动变量 (auto)、外部变量 (extern)、静态变量 (static)和寄存器变量 (register)</strong> ，它关系到变量在内存中的存放位置，由此决定了变量的保留时间和变量的作用范围。</p>
+</blockquote>
+<h2 id="day-09-c语言">Day 09 C语言</h2>
+<h4 id="if-条件编译">#if 条件编译</h4>
+<blockquote>
+<p>**<font style="color:red">这种能够根据不同情况编译不同代码、产生不同目标文件的机制，称为条件编译。</font>**条件-编译是预处理程序的功能，不是编译器的功能。</p>
+<p>这些操作都是在预处理阶段完成的，多余的代码以及所有的宏都不会参与编译，不仅保证了代码的正确性，还减小了编译后文件的体积。</p>
+<p>e.g.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">   <span class="cp">#if _WIN32
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>       <span class="nf">system</span><span class="p">(</span><span class="s">&#34;color 0c&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">       <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;http://c.biancheng.net</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="cp">#elif __linux__
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>       <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;</span><span class="se">\033</span><span class="s">[22;31mhttp://c.biancheng.net</span><span class="se">\n\033</span><span class="s">[22;30m&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>       <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;http://c.biancheng.net</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">   <span class="cp">#endif
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>#if、#elif、#else 和 #endif 都是预处理命令，整段代码的意思是：如果宏 _WIN32 的值为真，就保留第 4、5 行代码，删除第 7、9 行代码；如果宏 <strong>linux</strong> 的值为真，就保留第 7 行代码；如果所有的宏都为假，就保留第 9 行代码。</p>
+<p>用法**<font style="color:red">（需要注意的是，#if 命令要求判断条件为“整型常量表达式”）</font>**</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#if 整型常量表达式1
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   <span class="err">程序段</span><span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#elif 整型常量表达式2
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   <span class="err">程序段</span><span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#elif 整型常量表达式3
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   <span class="err">程序段</span><span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#else
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>   <span class="err">程序段</span><span class="mi">4</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#endif
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+<h3 id="day10-c语言">Day10 C语言</h3>
+<h4 id="地址存放问题">地址存放问题</h4>
+<blockquote>
+<p>在c语言中，局部变量存放在栈中其地址是从低到高，即先声明的在内存的低位，后声明的在内存的高位。<font style="color:red">类似于栈的操作，先进后出</font></p>
+<p>其他类型的变量都是正常存放，即照顺序存放。</p>
+</blockquote>
+<h3 id="第二周周末-c语言">第二周周末 C语言</h3>
+<h4 id="同样地址问题多字节数据高位存放在高地址地位存放在地址例">同样地址问题,多字节数据，高位存放在高地址，地位存放在地址。例</h4>
+<blockquote>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234240708.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234240708.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234240708.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234240708.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234240708.png"
+        title="image-20230304234240708" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234443044.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234443044.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234443044.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234443044.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304234443044.png"
+        title="image-20230304234443044" /></p>
+<p>other:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235153304.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235153304.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235153304.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235153304.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235153304.png"
+        title="image-20230304235153304" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235209162.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235209162.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235209162.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235209162.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235209162.png"
+        title="image-20230304235209162" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235241342.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235241342.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235241342.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235241342.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230304235241342.png"
+        title="image-20230304235241342" /></p>
+</blockquote>
+<h2 id="day11-c语言">Day11 C语言</h2>
+<h4 id="野指针">野指针</h4>
+<blockquote>
+<p>野指针：定义一个指针，没有明确指向，不能访问野指针，且程序不会报错。</p>
+<p>其地址位<strong>0000000000000000</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306103615011.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306103615011.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306103615011.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306103615011.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306103615011.png"
+        title="image-20230306103615011" /></p>
+<ul>
+<li>错误用法</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png"
+        data-srcset="../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png, ../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png 1.5x, ../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png 2x"
+        data-sizes="auto"
+        alt="../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png"
+        title="../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png" /></p>
+<ul>
+<li>正确</li>
+</ul>
+</blockquote>
+<h4 id="指针运算">指针运算</h4>
+<blockquote>
+<p>指针运算中，没有指针加指针，指针乘指针，指针除指针</p>
+<p>但是有指针减指针</p>
+<ul>
+<li>作用： 表示相同类型之间的两个指针之间相差多少个元素，结果的正负，仅代表地址高低</li>
+</ul>
+</blockquote>
+<h4 id="指针与二维数组">指针与二维数组</h4>
+<blockquote>
+<p>本质：数组指针是一个指针，存放的是内容是地址，指向的内容是一个以为数组</p>
+<p>二维数组的数组名是一个行指针，指向二维数组额首地址，行指针+n相当于地址偏离n行元素</p>
+<p>行指针的定义的一般形式</p>
+<ul>
+<li>
+<p>&lt;存储类型&gt; &lt;数据类型&gt; (*指针变量名)[<font style="color:red">列数</font>]</p>
+</li>
+<li>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>例如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;**p %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="o">**</span><span class="n">p</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;**p+1 %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="o">**</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;**(p+1) %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;**(p+1) %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;**(p+1) %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="o">**</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306215849152.png"
+        data-srcset="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306215849152.png, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306215849152.png 1.5x, https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306215849152.png 2x"
+        data-sizes="auto"
+        alt="https://typora-1304577690.cos.ap-chengdu.myqcloud.com/image-20230306215849152.png"
+        title="image-20230306215849152" /></p>
+</li>
+</ul>
+</blockquote>
+<h4 id="大端序和小端序">大端序和小端序</h4>
+<blockquote>
+<p>所有x86的计算机都是小端序，arm架构和网络编程中都是大端序</p>
+</blockquote></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-21</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式" data-via="xxxx" data-hashtags="单例模式"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-hashtag="单例模式"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 WhatsApp" data-sharer="whatsapp" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Myspace" data-sharer="myspace" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="分享到 Blogger" data-sharer="blogger" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Evernote" data-sharer="evernote" data-url="https://miaobuyi.web/01.%E8%B5%B5%E5%85%B4%E5%8D%8E%E6%B8%85%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%9F%B9%E8%AE%AD-c%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" data-title="设计模式"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="prev" rel="prev" title="设计模式"><i class="fas fa-angle-left fa-fw"></i>设计模式</a>
+            <a href="/mybatis/" class="next" rel="next" title="Mybatis">Mybatis<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.111.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">喵不易</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{},"cookieconsent":{"content":{"dismiss":"同意","link":"了解更多","message":"本网站使用 Cookies 来改善您的浏览体验."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
