@@ -1,4 +1,4 @@
-# 设计模式
+# First_post
 
 
 <!--more-->
@@ -28,8 +28,8 @@
 > --- scanf()
 >
 > * 解决垃圾字符
->* 抑制符 指定输入项后的内容不输入![1677466757754](https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png)
-> 
+> * 抑制符 指定输入项后的内容不输入![1677466757754](https://typora-1304577690.cos.ap-chengdu.myqcloud.com/1677466757754.png)
+>
 > 2. 用getchar()处理
 > 3. 在连续输入字符的中间加上空格
 >
@@ -47,6 +47,7 @@
 >   char a[10]="HELLO";
 >   gets(a);
 >   ```
+>
 > ```
 > 
 > ```
@@ -63,8 +64,8 @@
 >   char a[10]="HELLO";
 >   puts(a);
 >   ```
+>
 > ```
-> 
 > * ##### 自带换行 不用加"\n"
 > 
 > 
@@ -92,11 +93,11 @@
 #### 数组初始化
 
 >* 完全初始化
->  * int a[5]={1,2,3,4,5}; 
+> * int a[5]={1,2,3,4,5}; 
 >* 不完全初始化，其余初始化的元素默认为0
->  * int b[5]={1,2,3};
+> * int b[5]={1,2,3};
 >* 不指定元素个数，根据给定的来分配
->  * int c[]={1,2,3,4,5}
+> * int c[]={1,2,3,4,5}
 
 寻找素数的方法---https://zhuanlan.zhihu.com/p/104314640
 
@@ -214,15 +215,15 @@ void PrimeList(int* Prime, bool* isPrime, int n) {
 >```c 
 >#include <stdio.h>
 >int main(){
->    #if _WIN32
->        system("color 0c");
->        printf("http://c.biancheng.net\n");
->    #elif __linux__
->        printf("\033[22;31mhttp://c.biancheng.net\n\033[22;30m");
->    #else
->        printf("http://c.biancheng.net\n");
->    #endif
->    return 0;
+>#if _WIN32
+>   system("color 0c");
+>   printf("http://c.biancheng.net\n");
+>#elif __linux__
+>   printf("\033[22;31mhttp://c.biancheng.net\n\033[22;30m");
+>#else
+>   printf("http://c.biancheng.net\n");
+>#endif
+>return 0;
 >}
 >```
 >
@@ -232,13 +233,13 @@ void PrimeList(int* Prime, bool* isPrime, int n) {
 >
 >``` c
 >#if 整型常量表达式1
->    程序段1
+>程序段1
 >#elif 整型常量表达式2
->    程序段2
+>程序段2
 >#elif 整型常量表达式3
->    程序段3
+>程序段3
 >#else
->    程序段4
+>程序段4
 >#endif
 >```
 >
@@ -280,7 +281,7 @@ void PrimeList(int* Prime, bool* isPrime, int n) {
 >
 >* 错误用法
 >
->![](../../AppData/Roaming/Typora/typora-user-images/image-20230306102835519.png)
+>![](C:\Users\AppData\Roaming\Typora\typora-user-images\image-20230306102835519.png)
 >
 >* 正确
 
@@ -311,7 +312,7 @@ void PrimeList(int* Prime, bool* isPrime, int n) {
 >
 >   ```c
 >   #include <stdio.h>
->     
+>   
 >   int main()
 >   {
 >       int a[2][3]={1,2,3,4,5,6};
@@ -329,5 +330,5 @@ void PrimeList(int* Prime, bool* isPrime, int n) {
 
 #### 大端序和小端序
 
-> 所有x86的计算机都是小端序，arm架构和网络编程中都是大端序
+> 所有x86的计算机都是小端序，a
 
