@@ -1,44 +1,44 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>miaobuyi&#39;s blog</title>
-        <link>https://miaobuyi.web/</link>
+        <link>https://miao.github.io/</link>
         <description>miaobuyi&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 07 Mar 2023 11:30:15 &#43;0800</lastBuildDate>
-            <atom:link href="https://miaobuyi.web/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="https://miao.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>First_post</title>
-    <link>https://miaobuyi.web/c%E8%AF%AD%E8%A8%80/</link>
+    <link>https://miao.github.io/c%E8%AF%AD%E8%A8%80/</link>
     <pubDate>Tue, 07 Mar 2023 11:30:15 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/c%E8%AF%AD%E8%A8%80/</guid>
+    <guid>https://miao.github.io/c%E8%AF%AD%E8%A8%80/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>SpringMVC</title>
-    <link>https://miaobuyi.web/springmvc/</link>
+    <link>https://miao.github.io/springmvc/</link>
     <pubDate>Tue, 21 Sep 2021 17:51:32 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/springmvc/</guid>
+    <guid>https://miao.github.io/springmvc/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Mybatis</title>
-    <link>https://miaobuyi.web/mybatis/</link>
+    <link>https://miao.github.io/mybatis/</link>
     <pubDate>Tue, 21 Sep 2021 17:51:18 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/mybatis/</guid>
+    <guid>https://miao.github.io/mybatis/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>设计模式</title>
-    <link>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
+    <link>https://miao.github.io/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</link>
     <pubDate>Tue, 21 Sep 2021 17:50:13 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
+    <guid>https://miao.github.io/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Spring</title>
-    <link>https://miaobuyi.web/spring/</link>
+    <link>https://miao.github.io/spring/</link>
     <pubDate>Tue, 21 Sep 2021 17:36:25 &#43;0800</pubDate>
     <author>作者</author>
-    <guid>https://miaobuyi.web/spring/</guid>
+    <guid>https://miao.github.io/spring/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
